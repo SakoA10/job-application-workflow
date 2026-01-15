@@ -1,0 +1,403 @@
+{
+  "name": "Job Application",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Job Application Form",
+        "formDescription": "Please fill in the form below. We will review your application.",
+        "formFields": {
+          "values": [
+            {
+              "fieldName": "Full Name",
+              "fieldLabel": "Full Name",
+              "requiredField": true
+            },
+            {
+              "fieldName": "Email",
+              "fieldLabel": "Email",
+              "fieldType": "email",
+              "requiredField": true
+            },
+            {
+              "fieldName": "Phone",
+              "fieldLabel": "Phone",
+              "requiredField": true
+            },
+            {
+              "fieldName": "Country / City",
+              "fieldLabel": "Country / City",
+              "requiredField": true
+            },
+            {
+              "fieldName": "Role Applying For",
+              "fieldLabel": "Role Applying For",
+              "requiredField": true
+            },
+            {
+              "fieldName": "Experience",
+              "fieldLabel": "Experience",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "0–1 years"
+                  },
+                  {
+                    "option": "1–3 years"
+                  },
+                  {
+                    "option": "3–5 years"
+                  },
+                  {
+                    "option": "5+ years"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldName": "Short Message / Cover Text",
+              "fieldLabel": "Short Message / Cover Text",
+              "fieldType": "textarea",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.4,
+      "position": [
+        -336,
+        48
+      ],
+      "id": "641b1c50-0fce-4525-b985-94da9d0652e1",
+      "name": "On form submission",
+      "webhookId": "5ec44610-0868-49b5-bf1c-29b96ce6e8e4"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1wy-1fpq_wlMSHsMwlCvLS9_GOV41HHVNjQUdmfHJ7nY",
+          "mode": "list",
+          "cachedResultName": "Job Applications",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1wy-1fpq_wlMSHsMwlCvLS9_GOV41HHVNjQUdmfHJ7nY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1wy-1fpq_wlMSHsMwlCvLS9_GOV41HHVNjQUdmfHJ7nY/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Timestamp": "={{$now}}",
+            "Full Name": "={{ $('On form submission').item.json['Full Name'] }}",
+            "Email": "={{ $('On form submission').item.json.Email }}",
+            "Phone": "={{ $('On form submission').item.json.Phone }}",
+            "Country / City": "={{ $('On form submission').item.json['Country / City'] }}",
+            "Role Applying For": "={{ $('On form submission').item.json['Role Applying For'] }}",
+            "Experience": "={{ $('On form submission').item.json.Experience }}",
+            "Short Message / Cover Text": "={{ $('On form submission').item.json['Short Message / Cover Text'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Timestamp",
+              "displayName": "Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Country / City",
+              "displayName": "Country / City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Role Applying For",
+              "displayName": "Role Applying For",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Experience",
+              "displayName": "Experience",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Short Message / Cover Text",
+              "displayName": "Short Message / Cover Text",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        288,
+        -96
+      ],
+      "id": "72380e46-cc7a-4ab4-8402-a39c36396354",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "4IKdAArhsftdM7rw",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1wy-1fpq_wlMSHsMwlCvLS9_GOV41HHVNjQUdmfHJ7nY",
+          "mode": "list",
+          "cachedResultName": "Job Applications",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1wy-1fpq_wlMSHsMwlCvLS9_GOV41HHVNjQUdmfHJ7nY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1wy-1fpq_wlMSHsMwlCvLS9_GOV41HHVNjQUdmfHJ7nY/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Email",
+              "lookupValue": "={{ $json.Email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -112,
+        48
+      ],
+      "id": "4daf8d50-012a-4b27-b4bf-f730e327dbcb",
+      "name": "Get row(s) in sheet",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "4IKdAArhsftdM7rw",
+          "name": "YOUR_GOOGLE_SHEETS_CREDENTIAL"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ef916139-4a0d-44a7-893c-b7663cf17821",
+              "leftValue": "={{ $('On form submission').item.json.Email }}",
+              "rightValue": "={{ $json.Email }}",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        80,
+        48
+      ],
+      "id": "eb2b9437-e575-4bdd-930c-b9897b3db54a",
+      "name": "If",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('On form submission').item.json.Email }}",
+        "subject": "Application Received",
+        "message": "=<p>Dear {{$node[\"On form submission\"].json[\"Full Name\"]}},</p>\n\n<p>Thank you for submitting your application for the {{$node[\"On form submission\"].json[\"Role Applying For\"]}} position.</p>\n\n<p>We have successfully received your application and will review it carefully.</p>\n\n<p>If any additional information is needed, we will contact you.</p>\n\n<p>We appreciate your interest and the time you took to apply.</p>\n\n<p>Best regards,<br>\nSako<br>\nAI Automation Developer<br>\nFreelancer</p>\n",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        496,
+        -96
+      ],
+      "id": "4640cd3f-5233-4fd2-94c7-0e6312b06937",
+      "name": "Send a message",
+      "webhookId": "35f698ae-ba87-447f-a684-5d4ed0e86d06",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "wTRGYvXbAyeyJMDg",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('On form submission').item.json.Email }}",
+        "subject": "Application Received Before",
+        "message": "=<p>Dear {{ $('On form submission').item.json['Full Name'] }},</p>\n\n<p>Your application has been already received.</p>\n\n<p>Best regards,<br>\nSako<br>\nAI Automation Developer<br>\nFreelancer</p>\n",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        288,
+        144
+      ],
+      "id": "9e0d75c4-1192-408f-8b51-dc1123eceaa1",
+      "name": "Send a message1",
+      "webhookId": "e08abbbe-1128-4c70-a10f-1c07b6d6b21c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "wTRGYvXbAyeyJMDg",
+          "name": "YOUR_GMAIL_CREDENTIAL"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "82d451ac-7dea-4e37-a955-7c7315db9e8d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "41e039cedb3a36a88c7cb06e1c01ecdba11906eba63c30992aded5ab7e47dc72"
+  },
+  "id": "x10NZQnXVnYaRlYn",
+  "tags": []
+}
