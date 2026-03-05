@@ -9,6 +9,9 @@ This workflow is built in n8n to automate job application submissions:
 - New applicants receive a professional confirmation email (HTML)
 - Duplicate submissions receive a polite notice
 
+## Flow
+Form submission → check for duplicate email → save to Google Sheets → send personalized HTML confirmation email
+
 ## Workflow Overview
 
 ![Workflow Canvas](screenshots/workflow-canvas.png)
@@ -36,3 +39,8 @@ This workflow is built in n8n to automate job application submissions:
 2. Import `workflow.json`
 3. Connect your Gmail account
 4. Start workflow, submit the form
+
+## Tech Stack
+- n8n
+- Google Sheets API
+- Gmail API
